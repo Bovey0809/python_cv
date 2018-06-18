@@ -1,0 +1,5 @@
+* 图像到图像的映射
+** 单应性变换
+*** 齐次坐标
+    [[https://zh.wikipedia.org/wiki/%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87][wikipedia齐次坐标]]
+** 直接线性变换
