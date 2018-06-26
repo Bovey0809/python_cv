@@ -1,21 +1,8 @@
-
-# coding: utf-8
-
 # In[1]:
-
-
 from scipy import linalg
-
-
 # In[2]:
-
-
 import numpy as np
-
-
 # In[3]:
-
-
 class Camera(object):
     """表示真空照相机的类"""
     def __init__(self, P):
@@ -25,81 +12,30 @@ class Camera(object):
         self.R = None
         self.t = None
         self.c = None
-        
     def project(self, X):
         """X的投射点, 并且进行坐标归一化"""
         x = np.dot(self.P, X)
         for i in range(3):
             x[i] /= x[2]
         return x
-
-
 # In[5]:
-
-
 points = np.loadtxt('house.p3d').T
-
-
 # In[7]:
-
-
 points.shape
-
-
 # In[8]:
-
-
 points = np.vstack((points, np.ones(points.shape[1])))
-
-
 # In[10]:
-
-
 points.shape
-
-
 # In[11]:
-
-
 P = np.hstack((np.eye(3), np.array([[0], [0], [-10]])))
-
-
 # In[12]:
-
-
-P
-
-
 # In[13]:
-
-
 cam = Camera(P)
-
-
 # In[14]:
-
-
-cam
-
-
 # In[15]:
-
-
 x = cam.project(points)
-
-
 # In[16]:
-
-
-x
-
-
-# In[17]:
-
-
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
-
 
 # In[18]:
 
@@ -156,4 +92,3 @@ for t in range(20):
     x = cam.project(points)
     plt.plot(x[0], x[1], 'k.')
     plt.show()
-
